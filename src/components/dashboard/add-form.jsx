@@ -48,7 +48,7 @@ export default function AddForm(props) {
 
   const addTask = (event) => {
     event.preventDefault();
-    let url = "http://apptasks-nodejs.herokuapp.com/api/v1/tasks";
+    let url = "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks";
     let options = {
       method: "POST",
       headers: {

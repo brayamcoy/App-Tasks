@@ -25,7 +25,7 @@ export default function TaskPanel() {
   const [tasksFiltered, setTasksFiltered] = useState("");
 
   const getTasks = () => {
-    const url = "http://apptasks-nodejs.herokuapp.com/api/v1/tasks";
+    const url = "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks";
     fetch(url)
       .then((response) => response.json())
       .then((myJson) => {
@@ -74,7 +74,8 @@ export default function TaskPanel() {
   const updateTask = (event) => {
     event.preventDefault();
     fetch(
-      "http://apptasks-nodejs.herokuapp.com/api/v1/tasks/" + taskEdited._id,
+      "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" +
+        taskEdited._id,
       {
         method: "PUT",
         headers: {
@@ -102,13 +103,16 @@ export default function TaskPanel() {
     } else if (newTask.is_completed === false) {
       newTask.is_completed = true;
     }
-    fetch("https://apptasks-nodejs.herokuapp.com/api/v1/tasks/" + newTask._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTask),
-    })
+    fetch(
+      "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" + newTask._id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      }
+    )
       .then((response) => response.json())
       .then((results) => {
         getTasks();
@@ -121,7 +125,7 @@ export default function TaskPanel() {
   };
 
   const deleteTask = (id) => {
-    fetch("https://apptasks-nodejs.herokuapp.com/api/v1/tasks/" + id, {
+    fetch("https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" + id, {
       method: "DELETE",
     })
       .then((response) => {
