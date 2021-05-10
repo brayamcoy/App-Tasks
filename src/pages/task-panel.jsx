@@ -26,7 +26,12 @@ export default function TaskPanel() {
 
   const getTasks = () => {
     const url = "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks";
-    fetch(url)
+    const options = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    fetch(url, options)
       .then((response) => response.json())
       .then((myJson) => {
         setTasks(myJson);
@@ -80,6 +85,7 @@ export default function TaskPanel() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(taskEdited),
       }
@@ -109,6 +115,7 @@ export default function TaskPanel() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(newTask),
       }
@@ -127,6 +134,9 @@ export default function TaskPanel() {
   const deleteTask = (id) => {
     fetch("https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" + id, {
       method: "DELETE",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     })
       .then((response) => {
         getTasks();

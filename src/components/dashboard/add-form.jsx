@@ -53,6 +53,7 @@ export default function AddForm(props) {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formTask),
     };
