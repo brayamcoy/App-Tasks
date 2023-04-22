@@ -33,7 +33,7 @@ export default function NotFound() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            The search you do does not exist.
+          The search you did does not exist.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

@@ -25,7 +25,7 @@ export default function TaskPanel() {
   const [tasksFiltered, setTasksFiltered] = useState("");
 
   const getTasks = () => {
-    const url = "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks";
+    const url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/tasks`;
     const options = {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -79,7 +79,7 @@ export default function TaskPanel() {
   const updateTask = (event) => {
     event.preventDefault();
     fetch(
-      "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" +
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/tasks/` +
         taskEdited._id,
       {
         method: "PUT",
@@ -110,7 +110,7 @@ export default function TaskPanel() {
       newTask.is_completed = true;
     }
     fetch(
-      "https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" + newTask._id,
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/tasks/` + newTask._id,
       {
         method: "PUT",
         headers: {
@@ -132,7 +132,7 @@ export default function TaskPanel() {
   };
 
   const deleteTask = (id) => {
-    fetch("https://apptasks-pwa-nodejs.herokuapp.com/api/v1/tasks/" + id, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/tasks/` + id, {
       method: "DELETE",
       headers: {
         "Access-Control-Allow-Origin": "*",
